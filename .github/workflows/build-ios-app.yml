@@ -1,0 +1,30 @@
+name: build-ios-app
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: fastlane beta
+        env:
+          # https://docs.fastlane.tools/codesigning/getting-started/#using-match
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          # appstoreconnect.apple.com
+          APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
+          APP_STORE_CONNECT_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
+          # developer.apple.com
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          # https://docs.fastlane.tools/app-store-connect-api/
+          API_ISSUER_ID: ${{ secrets.API_ISSUER_ID }}
+          API_KEY_ID: ${{ secrets.API_KEY_ID }}
+          API_KEY: ${{ secrets.API_KEY }}
