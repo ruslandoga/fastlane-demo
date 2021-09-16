@@ -18,9 +18,10 @@ default_platform(:ios)
 platform :ios do
   lane :beta do
     setup_ci if ENV["CI"]
+    sync_code_signing()
     sync_code_signing(type: "appstore")
     build_app(scheme: "FastlaneDemo", include_bitcode: true)
-    upload_to_testflight(skip_waiting_for_build_processing: true)
+    upload_to_testflight(skip_waiting_for_build_processing: true, skip_submission: true)
   end
 
   lane :tests do
