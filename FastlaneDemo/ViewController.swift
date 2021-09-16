@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import WebRTC
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        let _ = RTCPeerConnection.initialize()
     }
 
 

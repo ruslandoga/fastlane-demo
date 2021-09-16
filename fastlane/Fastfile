@@ -23,6 +23,12 @@ platform :ios do
     # https://docs.fastlane.tools/actions/sync_code_signing/
     sync_code_signing()
     sync_code_signing(type: "appstore")
+
+    carthage(
+      platform: "iOS",
+      cache_builds: true,
+      use_xcframeworks: true
+    )
     
     # https://docs.fastlane.tools/actions/build_app/
     build_app(scheme: "FastlaneDemo", include_bitcode: true)
