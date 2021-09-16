@@ -16,6 +16,22 @@ jobs:
       - name: install sentry-cli
         run: brew install getsentry/tools/sentry-cli
 
+      - name: cache carthage
+        uses: actions/cache@v2
+        with:
+          path: Carthage
+          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          restore-keys: ${{ runner.os }}-carthage-
+
+      - name: cache spm
+        uses: actions/cache@v2
+        with:
+          # path: .build
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/**/SourcePackages/checkouts
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
       - name: upload
         run: fastlane beta
         env:
