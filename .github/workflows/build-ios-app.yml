@@ -28,3 +28,7 @@ jobs:
           API_ISSUER_ID: ${{ secrets.API_ISSUER_ID }}
           API_KEY_ID: ${{ secrets.API_KEY_ID }}
           API_KEY: ${{ secrets.API_KEY }}
+          # sentry
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
