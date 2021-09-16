@@ -58,24 +58,26 @@ platform :ios do
     end
 
     # https://docs.fastlane.tools/actions/build_app/
-    build_app(scheme: "FastlaneDemo", include_bitcode: false)
+    build_app(scheme: "FastlaneDemo", include_bitcode: true)
 
     # https://docs.fastlane.tools/actions/upload_to_testflight/
     upload_to_testflight(skip_waiting_for_build_processing: true, api_key: api_key)
 
+    # wouldn't work with `include_bitcode: true` in build_app
+    # instead, upload_symbols lane is executed on schedule in .github/workflows/sentry.yml
     # https://github.com/getsentry/sentry-fastlane-plugin#sentry-actions
     # https://docs.sentry.io/platforms/apple/guides/macos/dsym/
-    sentry_upload_dsym(
-      auth_token: ENV["SENTRY_TOKEN"],
-      org_slug: ENV["SENTRY_ORG"],
-      project_slug: ENV["SENTRY_PROJECT"]
-    )
+    # sentry_upload_dsym(
+    #   auth_token: ENV["SENTRY_TOKEN"],
+    #   org_slug: ENV["SENTRY_ORG"],
+    #   project_slug: ENV["SENTRY_PROJECT"]
+    # )
   end
 
   lane :upload_symbols do
-    # https://docs.sentry.io/platforms/apple/guides/macos/dsym/
-    download_dsyms()
-
+    # https://docs.fastlane.tools/actions/download_dsyms/#download_dsyms
+    download_dsyms(version: "latest")
+    
     # https://github.com/getsentry/sentry-fastlane-plugin#sentry-actions
     # https://docs.sentry.io/platforms/apple/guides/macos/dsym/
     sentry_upload_dsym(
@@ -83,6 +85,8 @@ platform :ios do
       org_slug: ENV["SENTRY_ORG"],
       project_slug: ENV["SENTRY_PROJECT"]
     )
+
+    sh("rm ../*.dSYM.zip")
   end
 
   lane :tests do

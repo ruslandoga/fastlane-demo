@@ -10,9 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: install sentry-cli
-        run: brew install getsentry/tools/sentry-cli
-
       - name: cache carthage
         uses: actions/cache@v2
         with:
@@ -29,7 +26,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-spm-
 
-      - name: upload
+      - name: upload app to testflight
         run: fastlane beta
         env:
           # https://docs.fastlane.tools/codesigning/getting-started/#using-match
@@ -46,7 +43,3 @@ jobs:
           API_ISSUER_ID: ${{ secrets.API_ISSUER_ID }}
           API_KEY_ID: ${{ secrets.API_KEY_ID }}
           API_KEY: ${{ secrets.API_KEY }}
-          # sentry
-          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
