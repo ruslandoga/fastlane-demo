@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		1095AD0B26F2A33A00BDEFAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1095AD0A26F2A33A00BDEFAE /* Assets.xcassets */; };
 		1095AD0E26F2A33A00BDEFAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1095AD0C26F2A33A00BDEFAE /* LaunchScreen.storyboard */; };
 		1095AD1926F2A33A00BDEFAE /* FastlaneDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1095AD1826F2A33A00BDEFAE /* FastlaneDemoTests.swift */; };
+		10CC0A4D26F38BE20028910D /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10CC0A4C26F38BE20028910D /* WebRTC.xcframework */; };
+		10CC0A4E26F38BE20028910D /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10CC0A4C26F38BE20028910D /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,20 @@
 			remoteInfo = FastlaneDemo;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		10CC0A4F26F38BE20028910D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				10CC0A4E26F38BE20028910D /* WebRTC.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1095ACFE26F2A33800BDEFAE /* FastlaneDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastlaneDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +54,7 @@
 		1095AD1426F2A33A00BDEFAE /* FastlaneDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastlaneDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1095AD1826F2A33A00BDEFAE /* FastlaneDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneDemoTests.swift; sourceTree = "<group>"; };
 		1095AD1A26F2A33A00BDEFAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10CC0A4C26F38BE20028910D /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = Carthage/Build/WebRTC.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CC0A4D26F38BE20028910D /* WebRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +82,7 @@
 				1095AD0026F2A33800BDEFAE /* FastlaneDemo */,
 				1095AD1726F2A33A00BDEFAE /* FastlaneDemoTests */,
 				1095ACFF26F2A33800BDEFAE /* Products */,
+				10CC0A4B26F38BE20028910D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +118,14 @@
 			path = FastlaneDemoTests;
 			sourceTree = "<group>";
 		};
+		10CC0A4B26F38BE20028910D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10CC0A4C26F38BE20028910D /* WebRTC.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +136,7 @@
 				1095ACFA26F2A33800BDEFAE /* Sources */,
 				1095ACFB26F2A33800BDEFAE /* Frameworks */,
 				1095ACFC26F2A33800BDEFAE /* Resources */,
+				10CC0A4F26F38BE20028910D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,7 +394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = P85PYLD8U2;
 				INFOPLIST_FILE = FastlaneDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -388,7 +416,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = P85PYLD8U2;
 				INFOPLIST_FILE = FastlaneDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
