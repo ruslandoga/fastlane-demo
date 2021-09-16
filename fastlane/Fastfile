@@ -37,18 +37,31 @@ platform :ios do
       key_content: ENV["API_KEY"]
     )
 
+    # https://docs.fastlane.tools/actions/latest_testflight_build_number/#latest_testflight_build_number
+    # build_number = latest_testflight_build_number(api_key: api_key) + 1
+
+    # https://docs.fastlane.tools/actions/increment_build_number/#increment_build_number
+    increment_build_number(build_number: Time.now.to_i)
+
     # https://docs.fastlane.tools/actions/build_app/
     build_app(scheme: "FastlaneDemo", include_bitcode: false)
 
-    # https://docs.fastlane.tools/actions/latest_testflight_build_number/#latest_testflight_build_number
-    # commits_count = sh "git log --oneline | wc -l"
-    build_number = latest_testflight_build_number(api_key: api_key) + 1
+    # git tag beta/v1.2
+    # git push origin -t beta/v1.2
+    tag = last_git_tag(pattern: "beta/v")
+
+    if tag 
+      puts("latest git tag => #{tag}")
+      tag["beta/v"] = "" # "beta/v1.2" -> "1.2"
+      puts("version from tag => #{tag}")
+    end
 
     # https://docs.fastlane.tools/actions/upload_to_testflight/
     upload_to_testflight(
       skip_waiting_for_build_processing: true,
       api_key: api_key,
-      build_number: build_number
+      app_version: tag
+      # build_number: Time.now.to_i.to_s
     )
 
     # https://github.com/getsentry/sentry-fastlane-plugin#sentry-actions

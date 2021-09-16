@@ -1,11 +1,8 @@
 name: beta
 on:
   push:
-    branches:
-      - "master"
-  pull_request:
-    branches:
-      - "master"
+    tags:
+      - beta/v*
 
 jobs:
   testflight:
