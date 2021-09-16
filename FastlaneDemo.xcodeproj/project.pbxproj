@@ -16,6 +16,7 @@
 		1095AD1926F2A33A00BDEFAE /* FastlaneDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1095AD1826F2A33A00BDEFAE /* FastlaneDemoTests.swift */; };
 		10CC0A4D26F38BE20028910D /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10CC0A4C26F38BE20028910D /* WebRTC.xcframework */; };
 		10CC0A4E26F38BE20028910D /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10CC0A4C26F38BE20028910D /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		10CC0A5226F3ADDE0028910D /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 10CC0A5126F3ADDE0028910D /* Sentry */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10CC0A4D26F38BE20028910D /* WebRTC.xcframework in Frameworks */,
+				10CC0A5226F3ADDE0028910D /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = FastlaneDemo;
+			packageProductDependencies = (
+				10CC0A5126F3ADDE0028910D /* Sentry */,
+			);
 			productName = FastlaneDemo;
 			productReference = 1095ACFE26F2A33800BDEFAE /* FastlaneDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +197,9 @@
 				Base,
 			);
 			mainGroup = 1095ACF526F2A33800BDEFAE;
+			packageReferences = (
+				10CC0A5026F3ADDE0028910D /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+			);
 			productRefGroup = 1095ACFF26F2A33800BDEFAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -394,7 +402,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = P85PYLD8U2;
 				INFOPLIST_FILE = FastlaneDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -416,7 +424,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = P85PYLD8U2;
 				INFOPLIST_FILE = FastlaneDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -506,6 +514,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		10CC0A5026F3ADDE0028910D /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		10CC0A5126F3ADDE0028910D /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CC0A5026F3ADDE0028910D /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1095ACF626F2A33800BDEFAE /* Project object */;
 }

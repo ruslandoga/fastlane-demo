@@ -1,4 +1,4 @@
-name: build-ios-app
+name: beta
 on:
   push:
     branches:
@@ -8,11 +8,16 @@ on:
       - "master"
 
 jobs:
-  build:
+  testflight:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
-      - run: fastlane beta
+
+      - name: install sentry-cli
+        run: brew install getsentry/tools/sentry-cli
+
+      - name: upload
+        run: fastlane beta
         env:
           # https://docs.fastlane.tools/codesigning/getting-started/#using-match
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
@@ -28,3 +33,7 @@ jobs:
           API_ISSUER_ID: ${{ secrets.API_ISSUER_ID }}
           API_KEY_ID: ${{ secrets.API_KEY_ID }}
           API_KEY: ${{ secrets.API_KEY }}
+          # sentry
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}

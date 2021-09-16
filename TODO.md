@@ -8,7 +8,8 @@
 1. ~~fix icon error~~
 1. ~~handle encryption via info.plist~~
 1. ~~add carthage~~
-1. handle webrtc camera permission in info.plist
-1. upload dsyms to sentry
+1. ~~handle webrtc camera permission in info.plist~~
+1. ~~upload dsyms to sentry~~
 1. run ci on tag
 1. cache carthage deps
+1. enable bitcode (need to rethink sentry upload, possibly periodic ci job that runs fastlane upload_symbols)
