@@ -1,0 +1,32 @@
+name: sentry
+on:
+  push:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+  testflight:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install sentry-cli
+        run: brew install getsentry/tools/sentry-cli
+
+      - name: upload dsyms to sentry
+        run: fastlane upload_symbols
+        env:
+          # appstoreconnect.apple.com
+          APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
+          APP_STORE_CONNECT_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
+          # developer.apple.com
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          # https://docs.fastlane.tools/app-store-connect-api/
+          API_ISSUER_ID: ${{ secrets.API_ISSUER_ID }}
+          API_KEY_ID: ${{ secrets.API_KEY_ID }}
+          API_KEY: ${{ secrets.API_KEY }}
+          # sentry
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
