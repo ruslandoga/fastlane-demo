@@ -8,6 +8,7 @@
 1. ~~fix icon error~~
 1. ~~handle encryption via info.plist~~
 1. ~~add carthage~~
+1. handle webrtc camera permission in info.plist
 1. upload dsyms to sentry
 1. run ci on tag
 1. cache carthage deps
