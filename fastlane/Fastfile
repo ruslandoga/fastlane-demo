@@ -37,15 +37,25 @@ platform :ios do
       key_content: ENV["API_KEY"]
     )
 
-    # # https://docs.fastlane.tools/actions/increment_build_number/#increment_build_number
-    # commits_count = sh "git log --oneline | wc -l"
-    # increment_build_number(build_number: commits_count)
+    # https://docs.fastlane.tools/actions/latest_testflight_build_number/#latest_testflight_build_number
+    # build_number = latest_testflight_build_number(api_key: api_key) + 1
 
     # https://docs.fastlane.tools/actions/increment_build_number/#increment_build_number
-    increment_build_number(
-      # https://docs.fastlane.tools/actions/latest_testflight_build_number/#latest_testflight_build_number
-      build_number: latest_testflight_build_number(api_key: api_key) + 1
-    )
+    build_number = Time.now.to_i
+    increment_build_number(build_number: build_number)
+    puts("build number => #{build_number}")
+
+    # git tag beta/v1.2
+    # git push origin beta/v1.2
+    maybe_ref_or_tag = last_git_tag(pattern: "beta/v") || ENV["GITHUB_REF"]
+
+    if maybe_ref_or_tag
+      puts("latest git ref or tag => #{maybe_ref_or_tag}")
+      version = maybe_ref_or_tag.sub("refs/tags/beta/v", "").sub("beta/v", "")
+      puts("version from git ref or tag => #{version}")
+      # https://docs.fastlane.tools/actions/increment_version_number/
+      increment_version_number(version_number: version)
+    end
 
     # https://docs.fastlane.tools/actions/build_app/
     build_app(scheme: "FastlaneDemo", include_bitcode: false)
