@@ -11,5 +11,6 @@
 1. ~~handle webrtc camera permission in info.plist~~
 1. ~~upload dsyms to sentry~~
 1. ~~cache spm and carthage deps~~
-1. ~~run ci on tag~~
+1. ~~run ci on tag~~ (removed)
+1. improve spm/build caching
 1. enable bitcode (need to rethink sentry upload, possibly periodic ci job that runs fastlane upload_symbols, https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events)
