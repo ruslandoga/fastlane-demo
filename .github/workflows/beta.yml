@@ -26,7 +26,8 @@ jobs:
       - name: cache spm
         uses: actions/cache@v2
         with:
-          # path: .build
+          # TODO don't cache whole derived data, only the built spm deps to avoid recompilation
+          # path: /Users/runner/Library/Developer/Xcode/DerivedData/
           path: /Users/runner/Library/Developer/Xcode/DerivedData/**/SourcePackages/checkouts
           key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
           restore-keys: |

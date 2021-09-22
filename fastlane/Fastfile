@@ -53,11 +53,11 @@ platform :ios do
 
     # https://github.com/getsentry/sentry-fastlane-plugin#sentry-actions
     # https://docs.sentry.io/platforms/apple/guides/macos/dsym/
-    sentry_upload_dsym(
-      auth_token: ENV["SENTRY_TOKEN"],
-      org_slug: ENV["SENTRY_ORG"],
-      project_slug: ENV["SENTRY_PROJECT"]
-    )
+    # sentry_upload_dsym(
+    #   auth_token: ENV["SENTRY_TOKEN"],
+    #   org_slug: ENV["SENTRY_ORG"],
+    #   project_slug: ENV["SENTRY_PROJECT"]
+    # )
   end
 
   lane :sentry_sync_dsyms do
